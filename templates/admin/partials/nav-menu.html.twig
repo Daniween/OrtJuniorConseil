@@ -1,0 +1,54 @@
+{% set route_name = app.request.attributes.get('_route') %}
+
+<div class="{% if "dashboard" in route_name %} min-height-400 {% else %} min-height-300 {% endif %} bg-gradient-danger position-absolute w-100 backgroundTopPage"></div>
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+	<div class="sidenav-header">
+		<i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+		<a class="navbar-brand m-0" href="">
+			<img src="{{ asset('admin/img/brand/ortsup.png') }}" class="navbar-brand-img h-100" alt="main_logo">
+		</a>
+	</div>
+	<hr class="horizontal dark mt-0">
+	<div class="collapse navbar-collapse  w-auto h-auto h-100" id="sidenav-collapse-main">
+		<ul class="navbar-nav">
+			<li class="nav-item ">
+				<a class="nav-link {% if "dashboard" in route_name %} active {% endif %}" href="">
+					<div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+						<i class="ni ni-chart-pie-35 text-primary text-sm opacity-10"></i>
+					</div>
+					<span class="nav-link-text ms-1">Tableau de bord</span>
+				</a>
+			</li>
+
+
+			<li class="nav-item ">
+				<a class="nav-link {% if "customer" in route_name %} active {% endif %}" href="">
+					<div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+						<i class="ni ni ni-circle-08 text-success text-sm opacity-10"></i>
+					</div>
+					<span class="nav-link-text ms-1">Etudiants</span>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a data-bs-toggle="collapse" href="#gestion" class="nav-link {% if "gestion" in route_name or "competence" in route_name or "personnalite" in route_name %} active {% endif %}" aria-controls="missions" role="button" aria-expanded="false">
+					<div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+						<i class="ni ni-briefcase-24 text-primary text-sm opacity-10"></i>
+					</div>
+					<span class="nav-link-text ms-1">Espace Gestion</span>
+				</a>
+			</li>
+{#			<li class="nav-item">#}
+{#				<a data-bs-toggle="collapse" href="#gestion" class="nav-link {% if "gestion" in route_name or "competence" in route_name or "personnalite" in route_name %} active {% endif %}" aria-controls="missions" role="button" aria-expanded="false">#}
+{#					<div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">#}
+{#						<i class="ni ni-calendar-grid-58 text-info text-sm opacity-10"></i>#}
+{#					</div>#}
+{#					<span class="nav-link-text ms-1">Espace Gestion</span>#}
+{#				</a>#}
+{#			</li>#}
+
+		</ul>
+
+	</div>
+
+</aside>

@@ -1,0 +1,161 @@
+.btn-forsides
+{
+    color: #fff;
+    border-color: #ef4647;
+    background-color: #ef4647;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+}
+.btn-forsides:hover
+{
+    color: #fff;
+    border-color: #ef4647;
+    background-color: #ef4647;
+}
+.btn-forsides:focus,
+.btn-forsides.focus
+{
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08), 0 0 0 0 rgba(94, 114, 228, .5);
+}
+.btn-forsides.disabled,
+.btn-forsides:disabled
+{
+    color: #fff;
+    border-color: #ef4647;
+    background-color: #ef4647;
+}
+.btn-forsides:not(:disabled):not(.disabled):active,
+.btn-forsides:not(:disabled):not(.disabled).active,
+.show > .btn-forsides.dropdown-toggle
+{
+    color: #fff;
+    border-color: #ef4647;
+    background-color: #C11720;
+}
+.btn-forsides:not(:disabled):not(.disabled):active:focus,
+.btn-forsides:not(:disabled):not(.disabled).active:focus,
+.show > .btn-forsides.dropdown-toggle:focus
+{
+    box-shadow: none, 0 0 0 0 rgba(94, 114, 228, .5);
+}
+
+
+.chat
+{
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.chat-sm
+{
+    overflow-y: scroll;
+    height: 230px;
+}
+
+.chat .message-entrant, .message-sortant {
+    max-width: 80%;
+}
+
+#input-file-message-upload {
+    display: none;
+}
+
+.file-message-upload {
+    /*border: solid 1px #dee2e6;*/
+    padding-top: 10px;
+}
+
+.alertBack{
+    margin-bottom: 0em;
+    border-radius: 0em;
+}
+
+.sidenav{
+    background: white;
+}
+
+.spanOldYear {
+    color: #78D388;
+}
+
+.spanCurrentYear {
+    color: #5892FA;
+}
+
+.size-15 {
+    font-size: 15px;
+}
+
+.navbar-vertical .navbar-brand-img, .navbar-vertical .navbar-brand > img {
+    max-width: 75%;
+     max-height: 4rem;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.navbar .dropdown .dropdown-menu {
+    top: 0rem !important;
+}
+
+.btn {
+    margin-bottom: 0 !important;
+}
+
+.dark-version .modal-content {
+    background: #344767 !important;
+    color: #fff !important;
+}
+
+.dark-version .badge-pill {
+    color: #fff !important;
+}
+
+.dark-version span .status {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark-version .sidenav .bg-white {
+    color: #344767 !important;
+}
+
+.dark-version .card .bg-gray-200 {
+    background: #344767 !important;
+}
+
+.dark-version .form-control {
+    background: #344767 !important;
+    color: white !important;
+}
+
+.dark-version .choices__inner {
+    background: #344767 !important;
+    color: white !important;
+}
+
+.dark-version .form-select {
+    background: #344767 !important;
+    color: white !important;
+}
+
+.dark-version .btn-default {
+    background: #becde7 !important;
+    color: #1f1f1f !important;
+}
+
+.dark-version .badge-primary {
+    background: #becde7 !important;
+    color: #1f1f1f !important;
+}
+
+.dark-version .input-search {
+    border: none !important;
+}
+
+.dark-version .backgroundTopPage {
+    background-image: linear-gradient(195deg, #1c254c, #191b26);
+}
+
+.gray_dark {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
