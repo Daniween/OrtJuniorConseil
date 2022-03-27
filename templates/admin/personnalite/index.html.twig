@@ -1,0 +1,80 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Personnalités
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-2">
+        <div class="header-body">
+            <div class="row col-12 align-items-center py-4">
+                <div class="col-6">
+                    <h5 class="text-white d-inline-block mb-0">Personnalités</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="{{ path('personnalite_new') }}" class="btn btn-success">Ajouter une personnalité</a>
+                    <a href="{{ path('admin_home') }}" class="btn btn-light">Retour au dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div
+                        class="card pb-4">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <span class="mb-0 h5">Liste des personnalités</span>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table id="datatable" class="table table-sm datatable-export align-items-center table-flush p-2">
+
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Nombre d'étudiant(s) concerné(s)</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list text-sm">
+
+                            {% for personnalite in personnalites %}
+                                <tr scope="row">
+                                    <td>{{ personnalite.id }}</td>
+                                    <td>{{ personnalite.libelle }}</td>
+                                    <td>{{ personnalite.etudiantPersonnalites.count }}</td>
+                                    <td class="text-end p-0">
+                                        <div class="btn-group">
+                                            <a class="btn btn-xs btn-primary m-0" href="{{ path('personnalite_show', {'id': personnalite.id}) }}">Voir</a>
+                                            <a class="btn btn-xs btn-success m-0" href="{{ path('personnalite_edit', {'id': personnalite.id}) }}">Modifier</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">Aucune personnalité trouvée.</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/js/exportDatatable.js') }}"></script>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{{ asset('etudiant/img/favicon.png') }}">
+    <title>
+        Connexion
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('etudiant/css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('etudiant/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href="{{ asset('etudiant/css/font-awesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('etudiant/css/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{{ asset('etudiant/css/argon-design-system.css?v=1.2.2') }}" rel="stylesheet" />
+</head>
+
+<body class="login-page bg-default">
+
+<section class="section section-shaped section-xl">
+    <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="container pt-lg-7">
+        {{ include('etudiant/partials/messages.html.twig') }}
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-header bg-white pb-5">
+                        <div class="btn-wrapper text-center">
+                            <img class="img-fluid mt-2" style="max-width: 60%" src="{{ asset('admin/img/brand/ortsup.png') }}">
+                        </div>
+                    </div>
+                    <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                            <small>Connectez-vous</small>
+                        </div>
+
+                        <form role="form" method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('logout') }}">Déconnexion</a>
+                                </div>
+                            {% endif %}
+
+                            <div class="form-group mb-3">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group focused">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                            <div class="custom-control custom-control-alternative custom-checkbox">
+                                <input class="custom-control-input" id="_remember_me_etudiant" type="checkbox" name="_remember_me_etudiant">
+                                <label class="custom-control-label" for="_remember_me_etudiant"><span>Se souvenir de moi</span></label>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-default my-4">Se connecter</button>
+                            </div>
+                            <small>
+                                Vous n'avez pas encore de compte ? <a type="button" class="btn btn-outline-success btn-sm" href="{{ path('etudiant_register') }}">Se créer un compte</a>
+                            </small>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <a href="{{ path('app_forgotten_password') }}" class="text-light"><small>Mot de passe oublié ?</small></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+</html>

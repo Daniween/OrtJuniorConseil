@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    {% if not form.vars.valid %}
+        <div class="alert alert-danger">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+<div class="form-row">
+    <div class="form-group col-md-12">
+        {{ form_row(form.libelle, {'attr': {'class': 'form-control','placeholder': 'Exemple : Symfony'}}) }}
+    </div>
+</div>
+
+<div class="text-end">
+    <button class="btn btn-success mb-3 mt-3">Enregistrer</button>
+</div>
+{{ form_end(form) }}

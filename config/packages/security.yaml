@@ -3,16 +3,55 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\Admin:
+            algorithm: auto
+        App\Entity\Etudiant:
+            algorithm: auto
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_ETUDIANT: ROLE_USER
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        admin:
+            entity:
+                class: App\Entity\Admin
+                property: email
+        etudiant:
+            entity:
+                class: App\Entity\Etudiant
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            lazy: true
-            provider: users_in_memory
+        admin:
+            pattern: ^/admin
+            provider: admin
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+                enable_csrf: true
+                use_referer: true
+            logout:
+                path: admin_logout
+                target: admin_login
+            custom_authenticator: App\Security\AdminAuthenticator
+            entry_point: form_login
+        etudiant:
+            pattern: ^/etudiant
+            provider: etudiant
+            form_login:
+                login_path: etudiant_login
+                check_path: etudiant_login
+                enable_csrf: true
+                use_referer: true
+            logout:
+                path: etudiant_logout
+                target: etudiant_login
+            custom_authenticator: App\Security\EtudiantAuthenticator
+            entry_point: form_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -23,7 +62,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin/dashboard, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

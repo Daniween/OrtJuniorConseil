@@ -159,3 +159,7 @@
 .gray_dark {
     color: rgba(255, 255, 255, 0.6) !important;
 }
+
+.bg-gradient-ort {
+    background-image: linear-gradient(310deg, #1C1685 0%, #33BAFF 100%);
+}

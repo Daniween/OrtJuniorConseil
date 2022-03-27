@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+    {% if not form.vars.valid %}
+        <div class="alert alert-danger">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+
+<div class="form-group mb-3 p-0">
+    <div class="input-group input-group-alternative">
+        <div class="input-group- p-2">
+            {{ form_row(form.email, {'attr': {'class': 'form-control','placeholder': 'prenom.nom@ortmontreuil.fr'}}) }}
+        </div>
+    </div>
+</div>
+
+<div class="text-end">
+    <button class="btn btn-primary mt-3">S'inscrire</button>
+</div>
+
+{{ form_end(form) }}

@@ -1,0 +1,98 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Personnalités
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-2">
+        <div class="header-body">
+            <div class="row col-12 align-items-center py-4">
+                <div class="col-6">
+                    <h5 class="text-white d-inline-block mb-0">Personnalités</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a class="btn btn-light" href="{{ path('personnalite_index') }}">Retour à la liste des personnalités</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h5 class="mb-0">Personnalité :
+                            {{ personnalite.libelle }}</h5>
+                    </div>
+                    <div class="card-body col-6">
+                        <table class="table table-responsive table-hover text-sm">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ personnalite.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nom de la personnalité</th>
+                                <td>{{ personnalite.libelle }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer">
+                        <h6>Liste d'étudiant(e)s ayant cette compétence :</h6>
+
+                        <table id="datatable" class="table table-sm datatable-export align-items-center table-flush p-2">
+
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list text-sm">
+
+                            {% for etudiant in listeEtudiants %}
+                                <tr scope="row">
+                                    <td>{{ etudiant.etudiant.id }}</td>
+                                    <td>{{ etudiant.etudiant.name }}</td>
+                                    <td>{{ etudiant.etudiant.firstName }}</td>
+                                    <td>{{ etudiant.etudiant.email }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">Aucun(e) étduiant(e) trouvé(e).</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer text-end">
+                        <div class="btn-group-toggle">
+                            {% if personnalite.status == 'trash' %}
+                                <a class="btn btn-success" href="{{ path('personnalite_restore', {'id': personnalite.id}) }}">Restaurer</a>
+                                {{ include('admin/personnalite/_delete_form.html.twig') }}
+                            {% else %}
+                                <a class="btn btn-success" href="{{ path('personnalite_edit', {'id': personnalite.id}) }}">Modifier</a>
+                                <a class="btn btn-danger" href="{{ path('personnalite_move_to_trash', {'id': personnalite.id}) }}">Mettre à la corbeille</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/js/exportDatatable.js') }}"></script>
+
+{% endblock %}

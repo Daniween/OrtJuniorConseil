@@ -1,0 +1,87 @@
+{% extends 'etudiant/base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+    <div class="wrapper">
+        <div class="section section-hero section-shaped">
+            <div class="shape shape-style-1 shape-primary">
+                <span class="span-150"></span>
+                <span class="span-50"></span>
+                <span class="span-50"></span>
+                <span class="span-75"></span>
+                <span class="span-100"></span>
+                <span class="span-75"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+            </div>
+            <div class="page-header">
+                <div class="container shape-container d-flex align-items-center py-lg">
+                    <div class="col px-0">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-10 text-center">
+                                <h1 class="text-white display-1">Bonjour
+                                    {{ user.firstName }}</h1>
+                                <h3 class="text-white">Bienvenue sur ton espace
+                                    <strong>Ort Sup'</strong>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator separator-bottom separator-skew zindex-100">
+                <svg x="0" y="0" viewbox="0 0 2560 100" preserveaspectratio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+
+        </div>
+
+        <div class="section features-1">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-5">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-default shadow rounded-circle">
+                                <i class="ni ni-folder-17"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-default">Editer mes compétences et soft skills</h6>
+                            <p class="description opacity-8">
+                                Sur cet espace tu pourras gérer les compétences et les soft skills qui te qualifient.
+                            </p>
+                            <a href="" class="btn btn btn-default btn-icon mb-3 mb-sm-0">
+                                <span class="btn-inner--text">Accéder à l'espace des compétences</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-5">
+                        <div class="info">
+                            <div class="icon icon-lg icon-shape icon-shape-danger shadow rounded-circle">
+                                <i class="ni ni-calendar-grid-58"></i>
+                            </div>
+                            <h6 class="info-title text-uppercase text-danger">Espace Rendez-vous</h6>
+                            <p class="description opacity-8">
+                                Tu trouveras ici la liste de rendez-vous que te proposent les recruteurs.
+                            </p>
+                            <a href="" class="btn btn btn-danger btn-icon mb-3 mb-sm-0">
+                                <span class="btn-inner--text">Accéder à l'espace rendez-vous</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

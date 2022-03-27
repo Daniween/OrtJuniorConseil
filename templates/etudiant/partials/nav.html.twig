@@ -1,0 +1,76 @@
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+            <div class="navbar-collapse-header">
+                <div class="row">
+                    <div class="col-6 collapse-brand">
+                        <a href="{{ path('etudiant_home') }}">
+                            <img src="{{ asset('front/img/brand/ortsup.png') }}">
+                        </a>
+                    </div>
+                    <div class="col-6 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                <li>
+                    <a href="{{ path('etudiant_home') }}" class="nav-link">
+                        <span class="nav-link-inner--text">Accueil</span>
+                    </a>
+
+                </li>
+            </ul>
+
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+                        <i class="ni ni-folder-17"></i>
+                        <span class="nav-link-inner--text">Compétences et soft skills</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="" class="dropdown-item" role="button">
+                            <i class="ni ni-chart-bar-32"></i>
+                            <span class="nav-link-inner--text">Editer mes compétences et soft skills</span>
+                        </a>
+                        <a href="" class="dropdown-item" role="button">
+                            <i class="ni ni-collection"></i>
+                            <span class="nav-link-inner--text">Mes fichiers</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                <li class="nav-item">
+                    <a href="" class="text-white" role="button">
+                        <i class="ni ni-calendar-grid-58"></i>
+                        <span class="nav-link-inner--text">Mes Rendez-vous</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto"> <li class="nav-item dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" href="#" role="button">
+                        <i class="ni ni-single-02"></i>
+                        <span class="nav-link-inner--text">{{ app.user.firstName }}
+                            {{ app.user.name }}</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="" class="dropdown-item">Mon profil</a>
+                        <a href="{{ path('etudiant_logout') }}" class="dropdown-item">Déconnexion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
