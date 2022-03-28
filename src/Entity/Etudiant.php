@@ -55,7 +55,7 @@ class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
     private $etude;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private $roles = ["ROLE_ETUDIANT"];
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $resetToken;

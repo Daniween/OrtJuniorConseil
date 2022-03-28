@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Competence;
+use App\Entity\Etudiant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -21,8 +22,8 @@ class CompetenceRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param Competence $entity
+     * @param bool $flush
      */
     public function add(Competence $entity, bool $flush = true): void
     {
@@ -33,8 +34,8 @@ class CompetenceRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param Competence $entity
+     * @param bool $flush
      */
     public function remove(Competence $entity, bool $flush = true): void
     {
@@ -63,6 +64,41 @@ class CompetenceRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * @param Etudiant $etudiant
+     * @return mixed
+     */
+    public function findByEtudiantOwned(Etudiant $etudiant): mixed
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c', 'ce', 'e')
+            ->join('c.etudiantCompetences', 'ce')
+            ->join('ce.etudiant', 'e')
+            ->where('c.status = :status')
+            ->setParameter('status', Competence::TYPE_PUBLIC)
+            ->andWhere('e = :etudiant')
+            ->setParameter('etudiant', $etudiant);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param Etudiant $etudiant
+     * @return mixed
+     */
+    public function findByEtudiantNotOwned(Etudiant $etudiant): mixed
+    {
+        $idEtudiant = $etudiant->getId();
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery("SELECT c FROM App\Entity\Competence c WHERE c.id NOT IN (
+            SELECT c2 FROM App\Entity\Competence c2, App\Entity\EtudiantCompetence ce, App\Entity\Etudiant e
+            WHERE c2 = ce.competence AND e = ce.etudiant AND e = '$idEtudiant' AND c2.status = 'public'
+        )");
+
+        return $qb->getResult();
+    }
+
 
     // /**
     //  * @return Competence[] Returns an array of Competence objects

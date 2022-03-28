@@ -1,4 +1,4 @@
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2">
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light py-2 {% if globals.getCompletedProfil == false %}mt-5{% endif %}">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ path('etudiant_home') }}">
-                            <img src="{{ asset('front/img/brand/ortsup.png') }}">
+                            <img src="{{ asset('etudiant/img/brand/ortsup.png') }}">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -39,17 +39,17 @@
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ path('etudiant_competence') }}" class="dropdown-item" role="button">
-                            <i class="ni ni-chart-bar-32"></i>
+                            <i class="ni ni-briefcase-24"></i>
                             <span class="nav-link-inner--text">Editer mes compétences</span>
                         </a>
                         <a href="{{ path('etudiant_personnalite') }}" class="dropdown-item" role="button">
-                            <i class="ni ni-chart-bar-32"></i>
+                            <i class="ni ni-like-2"></i>
                             <span class="nav-link-inner--text">Editer mes soft skills</span>
                         </a>
-                        <a href="" class="dropdown-item" role="button">
-                            <i class="ni ni-collection"></i>
-                            <span class="nav-link-inner--text">Mes fichiers</span>
-                        </a>
+{#                        <a href="" class="dropdown-item" role="button">#}
+{#                            <i class="ni ni-collection"></i>#}
+{#                            <span class="nav-link-inner--text">Mes fichiers</span>#}
+{#                        </a>#}
                     </div>
                 </li>
             </ul>

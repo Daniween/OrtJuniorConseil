@@ -1,0 +1,86 @@
+{% extends 'etudiant/base.html.twig' %}
+
+{% block title %}Mes compétences{% endblock %}
+
+{% block body %}
+
+    <div class="wrapper">
+        <div class="section section-hero section-shaped">
+            <div class="shape shape-style-1 shape-primary">
+                <span class="span-150"></span>
+                <span class="span-50"></span>
+                <span class="span-50"></span>
+                <span class="span-75"></span>
+                <span class="span-100"></span>
+                <span class="span-75"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+            </div>
+            <div>
+                <div class="container shape-container d-flex align-items-center py-lg mt-2">
+                    {{ include('etudiant/partials/messages.html.twig') }}
+                    <div class="col px-0">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-10 text-center">
+                                <h1 class="text-white display-1 mb-5">Choisir mes compétences</h1>
+                                <div class="border-radius">
+                                    <div class="container-fluid">
+                                        <div class="card shadow">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table id="dataTable" class="table table-sm align-items-center table-flush">
+                                                        <thead class="thead-light">
+                                                        <tr>
+                                                            <th>Libellé</th>
+                                                            <th class="text-right">Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for competence in competences_owned %}
+                                                                <tr>
+                                                                    <td>
+                                                                        {{ competence.libelle }}
+                                                                    </td>
+                                                                    <td class="text-right">
+                                                                        <div class="btn-group pull-right">
+                                                                            <button class="btn btn-sm btn-success" title="Supprimer" onclick="addOrRemoveCompetence({{ competence.id }})" id="btnAddOrRemove{{ competence.id }}">
+                                                                                <i class="ni ni-check-bold" id="iAddOrRemove{{ competence.id }}"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                            {% for competence in competences_not_owned %}
+                                                                <tr>
+                                                                    <td>
+                                                                        {{ competence.libelle }}
+                                                                    </td>
+                                                                    <td class="text-right">
+                                                                        <div class="btn-group pull-right">
+                                                                            <button class="btn btn-sm btn-danger" title="Ajouter" onclick="addOrRemoveCompetence({{ competence.id }})" id="btnAddOrRemove{{ competence.id }}">
+                                                                                <i class="ni ni-fat-remove" id="iAddOrRemove{{ competence.id }}"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Etudiant;
 use App\Entity\Personnalite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -62,6 +63,40 @@ class PersonnaliteRepository extends ServiceEntityRepository
         }
 
         return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param Etudiant $etudiant
+     * @return mixed
+     */
+    public function findByEtudiantOwned(Etudiant $etudiant): mixed
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p', 'pe', 'e')
+            ->join('p.etudiantPersonnalites', 'pe')
+            ->join('pe.etudiant', 'e')
+            ->where('p.status = :status')
+            ->setParameter('status', Personnalite::TYPE_PUBLIC)
+            ->andWhere('e = :etudiant')
+            ->setParameter('etudiant', $etudiant);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param Etudiant $etudiant
+     * @return mixed
+     */
+    public function findByEtudiantNotOwned(Etudiant $etudiant): mixed
+    {
+        $idEtudiant = $etudiant->getId();
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery("SELECT p FROM App\Entity\Personnalite p WHERE p.id NOT IN (
+            SELECT p2 FROM App\Entity\Personnalite p2, App\Entity\EtudiantPersonnalite pe, App\Entity\Etudiant e
+            WHERE p2 = pe.personnalite AND e = pe.etudiant AND e = '$idEtudiant' AND p2.status = 'public'
+        )");
+
+        return $qb->getResult();
     }
 
     // /**

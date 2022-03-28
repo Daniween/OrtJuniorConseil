@@ -27,6 +27,16 @@
 
 <body class="index-page">
 
+{% if globals.getCompletedProfil == false %}
+    <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+        <span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
+        <span class="alert-text"><strong>Pensez à compléter votre profil pour apparaître chez les recruteurs.</strong> Vous pouvez le faire en cliquant <a href="{{ path('etudiant_profil') }}">ici</a></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+
 {% include 'etudiant/partials/nav.html.twig' %}
 
 <div class="wrapper">
@@ -53,6 +63,8 @@
             </div>
         </div>
     </footer>
+
+
 </div>
 
 <script src="{{ asset('etudiant/js/core/jquery.min.js') }}" type="text/javascript"></script>
