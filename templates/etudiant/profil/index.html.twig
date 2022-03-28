@@ -1,0 +1,129 @@
+{% extends 'etudiant/base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+    <div class="wrapper">
+        <div class="section section-hero section-shaped">
+            <div class="shape shape-style-1 shape-primary">
+                <span class="span-150"></span>
+                <span class="span-50"></span>
+                <span class="span-50"></span>
+                <span class="span-75"></span>
+                <span class="span-100"></span>
+                <span class="span-75"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+            </div>
+            <div class="page-header mt-lg">
+                <div class="container shape-container d-flex align-items-center py-lg mt-lg">
+                    <div class="col px-0">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-10 text-center">
+                                <h1 class="text-white display-1 mb-3">Mon profil</h1>
+                                <div class="bg-white border-radius">
+                                    <div class=text-center>
+                                        <div class="pt-5 text-center">
+                                            <div class="card-profile-image">
+                                                <a href="javascript:;">
+                                                    {% if user.avatar is defined and user.avatar is not null %}
+                                                        <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" class="rounded-circle" style="width: 150px;">
+                                                    {% else %}
+                                                        <img src="{{ asset('etudiant/img/faces/consultant.png') }}" class="rounded-circle" style="width: 150px;">
+                                                    {% endif %}
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="pt-2 text-center">
+                                            <div class="card-profile-actions py-4 mt-lg-0">
+                                                {% if user.document is defined and user.document is not null %}
+                                                    <a class="btn btn-sm btn-info mr-4" href="{{ asset('uploads/documents/' ~ user.document) }}" target="_blank">Voir le CV</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <h3>{{ user.firstName }} {{ user.name }}</h3>
+                                        <div class="h6 font-weight-300"><i class="fa fa-envelope mr-2"></i>{{ user.email }}</div>
+                                    </div>
+                                    <div class="mt-5 py-5 border-top text-center" id="edit_profil">
+                                        {{ include('etudiant/partials/messages.html.twig') }}
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-9">
+                                                {{ form_start(form) }}
+                                                <div class="form-row">
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.name, {'attr': {'placeholder': 'Votre nom', 'class': 'form-control'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.firstName, {'attr': {'placeholder': 'Votre prénom', 'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-12">
+                                                        {{ form_row(form.email, {'attr': {'placeholder': 'Votre email', 'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-12">
+                                                        {{ form_row(form.num, {'attr': {'placeholder': '+ 33', 'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.plainPassword.first, {'attr': {'placeholder': 'Votre mot de passe', 'class': 'form-control', 'autocomplete': 'off'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.plainPassword.second, {'attr': {'placeholder': 'Repetez votre mot de passe', 'class': 'form-control', 'autocomplete': 'off'}}) }}
+                                                    </div>
+
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.avatar, {'attr': { 'class': 'form-control'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.document, {'attr': { 'class': 'form-control'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.birthDate, {'attr': {'placeholder': 'Séléctionnez une date', 'class' : 'datepicker form-control', 'autocomplete': 'off'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-6">
+                                                        {{ form_row(form.etude, {'attr': { 'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-row justify-content-center">
+                                                    <button type="submit" class="btn btn-default">Enregistrer</button>
+                                                </div>
+
+                                                {{ form_end(form) }}
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('etudiant/js/plugins/flatpickr.min.js') }}"></script>
+    <script>
+        if (document.querySelector('.datepicker')) {
+            flatpickr('.datepicker', {
+                allowInput: true
+            }); // flatpickr
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Ajouter un nouveau niveau d'étude{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-2">
+        <div class="header-body">
+            <div class="row col-12 align-items-center py-4">
+                <div class="col-6">
+                    <h5 class="text-white d-inline-block mb-0">Niveau d'étude</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a class="btn btn-light" href="{{ path('etude_index') }}">Retour à la liste des niveaux d'étude</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h5 class="mb-0">Ajouter un nouveau niveau d'étude</h5>
+                    </div>
+                    <div class="card-body">
+                        {{ include('admin/etude/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

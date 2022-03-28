@@ -31,10 +31,10 @@
 			</li>
 
 			<li class="nav-item">
-				<a class="nav-link {% if "competence" in route_name or "personnalite" in route_name %} active {% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#gestion">
+				<a class="nav-link {% if "competence" in route_name or "personnalite" in route_name or "etude" in route_name %} active {% endif %}" data-bs-toggle="collapse" aria-expanded="false" href="#gestion">
 					<span class="sidenav-normal"><i class="ni ni-briefcase-24 text-warning text-sm opacity-10"></i> Espace Gestion <b class="caret"></b></span>
 				</a>
-				<div class="collapse {% if "competence" in route_name or "personnalite" in route_name %} show {% endif %}" id="gestion">
+				<div class="collapse {% if "competence" in route_name or "personnalite" in route_name or "etude" in route_name %} show {% endif %}" id="gestion">
 					<ul class="nav nav-sm flex-column">
 						<li class="nav-item">
 							<a class="nav-link {% if "competence" in route_name %} active {% endif %}" href="{{ path('competence_index') }}">
@@ -42,7 +42,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {%  if "personnalite" in route_name %} active {% endif %}" href="{{ path('personnalite_index') }}">
+							<a class="nav-link {% if "etude" in route_name %} active {% endif %}" href="{{ path('etude_index') }}">
+								<span class="sidenav-normal">Niveaux d'étude</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {% if "personnalite" in route_name %} active {% endif %}" href="{{ path('personnalite_index') }}">
 								<span class="sidenav-normal">Personnalités</span>
 							</a>
 						</li>

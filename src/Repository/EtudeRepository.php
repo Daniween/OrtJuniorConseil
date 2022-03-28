@@ -4,7 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Etude;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -65,21 +64,7 @@ class EtudeRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    /**
-     * @param string $token
-     * @return mixed
-     * @throws NonUniqueResultException
-     */
-    public function findOneByResetToken(string $token)
-    {
-        return $this->createQueryBuilder('e')
-            ->select('e')
-            ->where("e.resetToken = :token")
-            ->setParameter('token', $token)
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
+
 
     // /**
     //  * @return Etude[] Returns an array of Etude objects

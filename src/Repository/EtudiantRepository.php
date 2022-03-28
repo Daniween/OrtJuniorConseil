@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Etudiant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
@@ -43,6 +44,22 @@ class EtudiantRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    /**
+     * @param string $token
+     * @return mixed
+     * @throws NonUniqueResultException
+     */
+    public function findOneByResetToken(string $token)
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e')
+            ->where("e.resetToken = :token")
+            ->setParameter('token', $token)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     // /**
