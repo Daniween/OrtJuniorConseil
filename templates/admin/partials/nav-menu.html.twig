@@ -65,14 +65,16 @@
 					<span class="nav-link-text ms-1">Utilisateurs Admin</span>
 				</a>
 			</li>
-{#			<li class="nav-item">#}
-{#				<a data-bs-toggle="collapse" href="#gestion" class="nav-link {% if "gestion" in route_name or "competence" in route_name or "personnalite" in route_name %} active {% endif %}" aria-controls="missions" role="button" aria-expanded="false">#}
-{#					<div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">#}
-{#						<i class="ni ni-calendar-grid-58 text-info text-sm opacity-10"></i>#}
-{#					</div>#}
-{#					<span class="nav-link-text ms-1">Espace Gestion</span>#}
-{#				</a>#}
-{#			</li>#}
+
+			<li class="nav-item ">
+				<a class="nav-link {% if "trash" in route_name %} active {% endif %}" href="{{ path('admin_user_index') }}">
+					<div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+						<i class="ni ni-basket text-dark text-sm opacity-10"></i>
+					</div>
+					<span class="nav-link-text ms-1">Corbeille</span>
+				</a>
+			</li>
+
 
 		</ul>
 
