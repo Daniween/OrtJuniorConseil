@@ -44,6 +44,9 @@ class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $activate = 0;
 
+    #[ORM\Column(type: 'boolean')]
+    private $completed = 0;
+
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $address;
 
@@ -204,6 +207,18 @@ class Etudiant implements UserInterface, PasswordAuthenticatedUserInterface
     public function setActivate(bool $activate): self
     {
         $this->activate = $activate;
+
+        return $this;
+    }
+
+    public function getCompleted(): ?bool
+    {
+        return $this->completed;
+    }
+
+    public function setCompleted(bool $completed): self
+    {
+        $this->completed = $completed;
 
         return $this;
     }

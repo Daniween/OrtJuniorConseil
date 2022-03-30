@@ -20,11 +20,14 @@ class Globals extends AbstractController {
     public function getCompletedProfil() {
         $user = $this->getUser();
 
-        if ($user->getName() !== null AND $user->getFirstName() !== null AND $user->getEtude() !== null) {
-            return true;
-        } else {
-            return false;
+        if ($user !== null) {
+            if ($user->getName() !== null AND $user->getFirstName() !== null AND $user->getEtude() !== null) {
+                return true;
+            } else {
+                return false;
+            }
         }
+
     }
 
 }

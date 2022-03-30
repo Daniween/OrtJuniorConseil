@@ -111,6 +111,11 @@ class ProfilController extends AbstractController
                 $user->setPassword($this->passwordHasher->hashPassword($user, $form->get('plainPassword')->getData()));
             }
 
+            // si l'étudiant a rempli son nom, son prénom et son niveau d'étude : son profil est considéré comme complété
+            if (!$form->get('name')->isEmpty() and !$form->get('firstName')->isEmpty() and !$form->get('etude')->isEmpty()) {
+                $user->setCompleted(true);
+            }
+
             $this->entityManager->flush();
             $this->addFlash('success', 'Votre profil à bien été mis à jour !');
             return $this->redirectToRoute('etudiant_profil', [

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('etudiant/img/apple-icon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('etudiant/img/favicon.png') }}">
+    <title>{% block title %}Rechercher des étudiant(e)s{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('etudiant/css/nucleo-icons.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('etudiant/css/nucleo-svg.css') }}" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome Icons -->
+    <link href="{{ asset('etudiant/css/font-awesome.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('etudiant/css/nucleo-svg.css') }}" rel="stylesheet"/>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ asset('etudiant/DataTables/datatables.min.css') }}">
+    <link href="{{ asset('etudiant/css/argon-design-system.css?v=1.2.2') }}" rel="stylesheet"/>
+    <link href="{{ asset('etudiant/css/custom.css') }}" rel="stylesheet"/>
+
+    {% block stylesheets %}{% endblock %}
+
+</head>
+
+<body class="index-page">
+
+    <div class="wrapper">
+        <div class="section section-hero section-shaped">
+            <div class="shape shape-style-1 shape-default">
+                <span class="span-150"></span>
+                <span class="span-50"></span>
+                <span class="span-50"></span>
+                <span class="span-75"></span>
+                <span class="span-100"></span>
+                <span class="span-75"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+                <span class="span-50"></span>
+                <span class="span-100"></span>
+            </div>
+            <div class="mt-2">
+                <div class="p-5 shape-container d-flex align-items-center py-lg mt-2">
+                    <div class="col px-0">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-12 text-center">
+                                <h1 class="text-white display-1 mb-3">Rechercher des étudiant(e)s</h1>
+                                <div class="bg-white">
+                                        {{ include('etudiant/partials/messages.html.twig') }}
+                                        <div class="row justify-content-center">
+                                            <div class="card-body">
+
+                                                {{ form_start(form) }}
+                                                {% if not form.vars.valid %}
+                                                    <div class="alert alert-danger">
+                                                        {{ form_errors(form) }}
+                                                    </div>
+                                                {% endif %}
+
+                                                <div class="form-row row">
+                                                    <div class="form-group col-md-3">
+                                                        {{ form_row(form.q, {'attr': {'class': 'form-control','placeholder': 'Nom'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        {{ form_row(form.competence, {'attr': {'class': 'choices-remove-button-competence'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        {{ form_row(form.personnalite, {'attr': {'class': 'choices-remove-button-personnalite'}}) }}
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        {{ form_row(form.etude, {'attr': {'class': 'choices-remove-button-etude'}}) }}
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="d-flex justify-content-center">
+                                                    <button class="btn btn-success">{{ button_label|default('Rechercher')|trans }}</button>
+                                                </div>
+
+                                                {{ form_end(form) }}
+
+                                                <div class="table-responsive mt-2">
+                                                    <table id="dataTable" class="table table-sm align-items-center table-flush">
+                                                        <thead class="thead-light">
+
+                                                        <tr>
+                                                            <th>Nom complet</th>
+                                                            <th>E-mail</th>
+                                                            <th>Numéro</th>
+                                                            <th>Niveau d'étude</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody class="list text-sm">
+                                                        {% for etudiant in etudiants %}
+                                                            <tr>
+                                                                <td>{{ etudiant.firstName }} {{ etudiant.name }}</td>
+                                                                <td>{{ etudiant.email }}</td>
+                                                                <td>
+                                                                    {% if etudiant.num is defined and etudiant.num is not null %}
+                                                                        {{ etudiant.num }}
+                                                                    {% else %}
+                                                                        <span class="text-muted font-italic">Non défini</span>
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td>
+                                                                    {% if etudiant.etude is defined and etudiant.etude is not null %}
+                                                                        {{ etudiant.etude.libelle }}
+                                                                    {% else %}
+                                                                        <span class="text-muted font-italic">Non défini</span>
+                                                                    {% endif %}
+                                                                </td>
+                                                                <td class="text-end p-0">
+                                                                    <div class="btn-group">
+                                                                        <a class="btn btn-sm btn-primary" href="{{ path('search_show_profil', {'id': etudiant.id}) }}">Voir le profil</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% else %}
+                                                            <tr>
+                                                                <td colspan="10">Aucun(e) éudiant(e) trouvé(e)</td>
+                                                            </tr>
+                                                        {% endfor %}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ asset('etudiant/js/core/jquery.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('etudiant/js/DataTables/datatables.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                language: {
+                    url: "{{ asset('etudiant/js/datatable_fr_fr.json') }}"
+                }
+            });
+        });
+    </script>
+
+    <script src="{{ asset('etudiant/js/core/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('etudiant/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('etudiant/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="{{ asset('etudiant/js/plugins/bootstrap-switch.js') }}"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="{{ asset('etudiant/js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('etudiant/js/plugins/moment.min.js') }}"></script>
+    <script src="{{ asset('etudiant/js/plugins/datetimepicker.js') }}" type="text/javascript"></script>
+    {#<script src="{{ asset('etudiant/js/plugins/bootstrap-datepicker.min.js') }}"></script>#}
+    <!-- Control Center for Argon UI Kit: parallax effects, scripts for the example pages etc -->
+    <!--  Google Maps Plugin    -->
+    <script src="{{ asset('etudiant/js/argon-design-system.min.js?v=1.2.2') }}" type="text/javascript"></script>
+    <script src="{{ asset('etudiant/js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('etudiant/js/plugins/choices.min.js') }}"></script>
+    <script>
+        if (document.querySelector('.choices-remove-button-competence')) {
+            var element1 = document.querySelector('.choices-remove-button-competence');
+            const choices = new Choices(element1, {
+                removeItemButton: true,
+                searchPlaceholderValue : "Rechercher une compétence",
+                loadingText: 'Chargement...',
+                noResultsText: 'Aucun résultat trouvé',
+                noChoicesText: 'Aucun choix à faire',
+                itemSelectText: 'Pressez entrez pour séléctionner',
+            });
+        }
+
+        if (document.querySelector('.choices-remove-button-personnalite')) {
+            var element2 = document.querySelector('.choices-remove-button-personnalite');
+            const choices = new Choices(element2, {
+                removeItemButton: true,
+                searchPlaceholderValue : "Rechercher par soft skills",
+                loadingText: 'Chargement...',
+                noResultsText: 'Aucun résultat trouvé',
+                noChoicesText: 'Aucun choix à faire',
+                itemSelectText: 'Pressez entrez pour séléctionner',
+            });
+        }
+
+        if (document.querySelector('.choices-remove-button-etude')) {
+            var element3 = document.querySelector('.choices-remove-button-etude');
+            const choices = new Choices(element3, {
+                removeItemButton: true,
+                searchPlaceholderValue : "Rechercher un niveau d'étude",
+                loadingText: 'Chargement...',
+                noResultsText: 'Aucun résultat trouvé',
+                noChoicesText: 'Aucun choix à faire',
+                itemSelectText: 'Pressez entrez pour séléctionner',
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
