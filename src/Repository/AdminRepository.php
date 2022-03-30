@@ -11,7 +11,6 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @method Admin|null find($id, $lockMode = null, $lockVersion = null)
  * @method Admin|null findOneBy(array $criteria, array $orderBy = null)
- * @method Admin[]    findAll()
  * @method Admin[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class AdminRepository extends ServiceEntityRepository
@@ -43,6 +42,26 @@ class AdminRepository extends ServiceEntityRepository
         if ($flush) {
             $this->_em->flush();
         }
+    }
+
+    /**
+     * @param bool $trash
+     * @return array|mixed
+     */
+    public function findAll($trash = false)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('a');
+
+        if ($trash) {
+            $qb->where('a.status = :status')
+                ->setParameter('status', Admin::TYPE_TRASH);
+        } else {
+            $qb->where('a.status != :status')
+                ->setParameter('status', Admin::TYPE_TRASH);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     // /**

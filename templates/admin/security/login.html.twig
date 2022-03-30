@@ -39,6 +39,7 @@
                                     {% if error %}
                                         <div class="alert alert-danger text-white">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                                     {% endif %}
+                                    {{ include('admin/partials/messages.html.twig') }}
                                     <div class="mb-3">
                                         <input type="email" alue="{{ last_username }}" name="email" id="inputEmail"  class="form-control form-control-lg" placeholder="Email" aria-label="Email">
                                     </div>

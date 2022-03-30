@@ -16,9 +16,15 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-         if ($this->getUser()) {
-             return $this->redirectToRoute('admin_home');
-         }
+        if ($this->getUser()) {
+
+            if ($this->getUser()->getEnabled() === false) {
+                $this->addFlash('warning', "Votre compte est désactivé.");
+
+                return $this->redirectToRoute('admin_logout');
+            }
+            return $this->redirectToRoute('admin_home');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

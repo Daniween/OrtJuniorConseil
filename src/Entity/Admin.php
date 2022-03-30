@@ -10,6 +10,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 class Admin implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public const TYPE_PUBLIC   = "public";
+    public const TYPE_TRASH    = "trash";
+    const ROLE_ADMIN = "ROLE_ADMIN";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -27,8 +31,11 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'datetime')]
     private $createAt;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $status = self::TYPE_PUBLIC;
+
     #[ORM\Column(type: 'boolean')]
-    private $status;
+    private $enabled;
 
     public function getId(): ?int
     {
@@ -94,14 +101,26 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStatus(): ?bool
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(bool $status): self
+    public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

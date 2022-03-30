@@ -1,0 +1,86 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Utilisateur Admin
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-2">
+        <div class="header-body">
+            <div class="row col-12 align-items-center py-4">
+                <div class="col-6">
+                    <h5 class="text-white d-inline-block mb-0">Utilisateur Admin</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a class="btn btn-light" href="{{ path('admin_user_index') }}">Retour à la liste des utilisateurs Admin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h5 class="mb-0">Email :
+                            {{ admin.email }}</h5>
+                    </div>
+                    <div class="card-body col-6">
+                        <table class="table table-responsive table-hover text-sm">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ admin.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ admin.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Créé le</th>
+                                <td>{{ admin.createAt ? admin.createAt|format_datetime('long', 'short', locale='fr') }}</td>
+                            </tr>
+                            <tr>
+                                <th>Activé</th>
+                                <td>
+                                    {% if  admin.enabled == true %}
+                                        <span class="badge badge-dot me-4">
+													<i class="bg-success"></i>
+													<span class="status text-dark">Activé</span>
+												</span>
+                                    {% else %}
+                                        <span class="badge badge-dot me-4">
+													<i class="bg-danger"></i>
+													<span class="status text-dark">Désactivé</span>
+												</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card-footer text-end">
+                        <div class="btn-group-toggle">
+                            {% if admin.status == false %}
+                                <a class="btn btn-success" href="{{ path('admin_user_restore', {'id': admin.id}) }}">Restaurer</a>
+                                {{ include('admin/personnalite/_delete_form.html.twig') }}
+                            {% else %}
+                                <a class="btn btn-success" href="{{ path('admin_user_edit', {'id': admin.id}) }}">Modifier</a>
+                                <a class="btn btn-danger" href="{{ path('admin_user_move_to_trash', {'id': admin.id}) }}">Mettre à la corbeille</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/js/exportDatatable.js') }}"></script>
+
+{% endblock %}

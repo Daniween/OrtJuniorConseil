@@ -1,0 +1,93 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Utilisateurs Admin
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-2">
+        <div class="header-body">
+            <div class="row col-12 align-items-center py-4">
+                <div class="col-6">
+                    <h5 class="text-white d-inline-block mb-0">Utilisateurs Admin</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="{{ path('admin_user_new') }}" class="btn btn-success">Ajouter un utilisateur Admin</a>
+                    <a href="{{ path('admin_home') }}" class="btn btn-light">Retour au dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col">
+                <div class="card pb-4">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <span class="mb-0 h5">Liste des utilisateurs Admin</span>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table id="datatable" class="table table-sm datatable-export align-items-center table-flush p-2">
+
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Créé le</th>
+                                <th scope="col">Activé</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list text-sm">
+
+                            {% for adminUser in adminUsers %}
+                                <tr scope="row">
+                                    <td>{{ adminUser.id }}</td>
+                                    <td>{{ adminUser.email }}</td>
+                                    <td>{{ adminUser.createAt ? adminUser.createAt|format_datetime('long', 'short', locale='fr') }}</td>
+                                    <td>
+                                        {% if  adminUser.enabled == true %}
+                                            <span class="badge badge-dot me-4">
+													<i class="bg-success"></i>
+													<span class="status text-dark">Activé</span>
+												</span>
+                                        {% else %}
+                                            <span class="badge badge-dot me-4">
+													<i class="bg-danger"></i>
+													<span class="status text-dark">Désactivé</span>
+												</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end p-0">
+                                        <div class="btn-group">
+                                            <a class="btn btn-xs btn-primary m-0" href="{{ path('admin_user_show', {'id': adminUser.id}) }}">Voir</a>
+                                            <a class="btn btn-xs btn-success m-0" href="{{ path('admin_user_edit', {'id': adminUser.id}) }}">Modifier</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">Aucun utilisateur admin trouvé.</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('admin/js/exportDatatable.js') }}"></script>
+
+{% endblock %}
+
+
+
