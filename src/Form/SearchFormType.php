@@ -32,20 +32,14 @@ class SearchFormType extends AbstractType
                 'required' => false,
                 'class' => Competence::class,
                 'expanded' => false,
-                'multiple' => true,
-                'choice_label' => function ($competence) {
-                    return $competence->getLibelle();
-                }
+                'multiple' => true
             ])
             ->add('personnalite', EntityType::class, [
                 'label' => "Soft Skill",
                 'required' => false,
                 'class' => Personnalite::class,
                 'expanded' => false,
-                'multiple' => true,
-                'choice_label' => function ($personnalite) {
-                    return $personnalite->getLibelle();
-                }
+                'multiple' => true
             ])
             ->add('etude', EntityType::class, [
                 'label' => "Niveau d'étude",
@@ -57,9 +51,6 @@ class SearchFormType extends AbstractType
                     return $er->createQueryBuilder('e')
                         ->where('e.status != :status')
                         ->setParameter('status', Etude::TYPE_TRASH);
-                },
-                'choice_label' => function ($etude) {
-                    return $etude->getLibelle();
                 }
             ])
         ;

@@ -2848,7 +2848,7 @@ fieldset:disabled a.btn {
 
 .btn-danger:hover {
   color: #fff;
-  background-color: #f3e;
+  background-color: #ec0c38;
   border-color: #ec0c38;
 }
 
@@ -4447,6 +4447,10 @@ input[type="button"].btn-block {
 
 .custom-file-input:lang(en)~.custom-file-label::after {
   content: "Browse";
+}
+
+.custom-file-input:lang(fr)~.custom-file-label::after {
+  content: "Choisissez un fichier";
 }
 
 .custom-file-input~.custom-file-label[data-browse]::after {
@@ -20381,6 +20385,13 @@ textarea[resize="horizontal"] {
   padding-bottom: 2rem;
 }
 
+/* Début Modifications Yoel --------------------------- */
+.section-xxs {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+/* Fin Modifications Yoel --------------------------- */
+
 @media (min-width: 768px) {
   .section-hero {
     min-height: 500px;
@@ -20441,6 +20452,22 @@ textarea[resize="horizontal"] {
 
 .section-shaped .shape-primary {
   background: linear-gradient(150deg, #281483 15%, #8f6ed5 70%, #d782d9 94%);
+}
+
+.section-shaped .shape-success {
+  background: linear-gradient(150deg, #2dce89 15%, #2dcecc 70%, #2dcecc 94%);
+}
+
+.section-shaped .shape-info {
+  background: linear-gradient(150deg, #11cdef 15%, #1171ef 70%, #1171ef 94%);
+}
+
+.section-shaped .shape-warning {
+  background: linear-gradient(150deg, #fb6340 15%, #de4721 70%, #b3381b 94%);
+}
+
+.section-shaped .shape-danger {
+  background: linear-gradient(150deg, #f5365c 15%, #d72449 70%, #ba1838 94%);
 }
 
 .section-shaped .shape-primary :nth-child(1) {
@@ -24141,6 +24168,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   margin-left: 0;
 }
 
+/* DEBUT ICI POUR MODIFIER ZOOM MENU YOEL */
+
 .dropdown .dropdown-item:hover,
 .dropup .dropdown-item:hover {
   -webkit-transform: scale(1.1);
@@ -24151,6 +24180,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   transition: all .4s ease;
   background: #fff;
 }
+
+/* FIN ICI POUR MODIFIER ZOOM MENU YOEL */
 
 .dropdown .dropdown-menu {
   -webkit-animation: fpFadeInUp 300ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -24940,10 +24971,10 @@ hr.line-deafult {
   font-size: .8em;
 }
 
-.chat {
+/*.chat {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-}
+}*/
 
 @media (min-width: 992px) {
   .chat .section {
@@ -25133,7 +25164,7 @@ hr.line-deafult {
 }
 
 .table .thead-light th {
-  background-color: #fff;
+  /*background-color: #fff;*/
   color: #525f7f;
 }
 
@@ -25692,7 +25723,7 @@ hr.line-deafult {
   position: absolute;
   left: 32%;
   top: 5%;
-  height: 90%;
+  height: 100%;
   background-color: #fff;
   transform: rotate(80deg);
   z-index: 1;
@@ -27390,7 +27421,7 @@ hr.line-deafult {
 /*===============================
 =            Choices            =
 ===============================*/
-.choices {
+/*.choices {
   position: relative;
   margin-bottom: 24px;
   font-size: 16px;
@@ -27774,7 +27805,7 @@ hr.line-deafult {
   display: none;
 }
 
-/*=====  End of Choices  ======*/
+!*=====  End of Choices  ======*!
 .choices[data-type*="select-multiple"] .choices__inner {
   display: table;
 }
@@ -27810,7 +27841,7 @@ hr.line-deafult {
 
 [data-type="select-multiple"] .choices__button:after {
   color: #172b4d !important;
-}
+}*/
 
 @media (max-width: 575.98px) {
   .dropdown.show .dropdown-menu.show .dropdown-item.dropdown-toggle.open+.dropdown-menu.show {
@@ -28046,7 +28077,7 @@ hr.line-deafult {
 
 .fileinput .thumbnail.img-circle {
   border-radius: 50%;
-  max-width: 100px;
+  max-width: 200px;
 }
 
 .fileinput .thumbnail>img {
@@ -28279,16 +28310,20 @@ hr.line-deafult {
 header {
   position: relative;
 }
-
+/* Début Modifications Yoel --------------------------- */
 .page-header {
-  min-height: 100vh;
+/*  min-height: 100vh;
   max-height: 999px;
   padding: 0;
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: center;*/
 }
+
+/* Fin Modifications Yoel --------------------------- */
+
+
 
 .page-header .carousel .carousel-indicators {
   bottom: 60px;

@@ -1,3 +1,10 @@
+.tchat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+
 .sidenav {
     max-height: 60%;
     width: 0;
@@ -15,4 +22,16 @@
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.chat
+{
+    overflow-y: scroll;
+    height: 350px;
+}
+
+.switch_user {
+    position: fixed;
+    top: 43em;
+    right: 10em;
 }
