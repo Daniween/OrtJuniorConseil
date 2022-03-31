@@ -1,0 +1,151 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Corbeille{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-2">
+        <div class="">
+            <div class="header-body">
+                <div class="row col-12 align-items-center py-4">
+                    <div class="col-6">
+                        <h5 class="text-white d-inline-block mb-0">Corbeille</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--6">
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <h6 class="mb-0">Liste des compétences mises à la corbeille</h6>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table class="table table-sm align-items-center table-flush text-sm">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Libellé</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for competence in competences %}
+                                <tr>
+                                    <td>{{ competence.id }}</td>
+                                    <td>{{ competence.libelle }}</td>
+                                    <td class="text-end p-0">
+                                        <div class="d-flex justify-content-end">
+                                            <a href="{{ path('competence_show', {'id': competence.id}) }}" data-bs-toggle="tooltip" title="Voir" class="btn btn-xs m-0 btn-primary me-1"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ path('competence_restore', {'id': competence.id}) }}" data-bs-toggle="tooltip" title="Restaurer" class="btn btn-xs m-0 btn-success me-1"><i class="fas fa-redo-alt"></i></a>
+                                            {{ include('admin/competence/_delete_form.html.twig') }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="7">Aucune compétence mis à la corbeille</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <h6 class="mb-0">Liste des soft skills mis à la corbeille</h6>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table class="table table-sm align-items-center table-flush text-sm">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Libellé</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for personnalite in personnalites %}
+                                <tr>
+                                    <td>{{ personnalite.id }}</td>
+                                    <td>{{ personnalite.libelle }}</td>
+                                    <td class="text-end p-0">
+                                        <div class="d-flex justify-content-end">
+                                            <a href="{{ path('personnalite_show', {'id': personnalite.id}) }}" data-bs-toggle="tooltip" title="Voir" class="btn btn-xs m-0 btn-primary me-1"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ path('personnalite_restore', {'id': personnalite.id}) }}" data-bs-toggle="tooltip" title="Restaurer" class="btn btn-xs m-0 btn-success me-1"><i class="fas fa-redo-alt"></i></a>
+                                            {{ include('admin/personnalite/_delete_form.html.twig') }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="7">Aucun soft skill mis à la corbeille</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header border-0">
+                        <h6 class="mb-0">Liste des niveaux d'étude mis à la corbeille</h6>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table class="table table-sm align-items-center table-flush text-sm">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>Id</th>
+                                <th>Libellé</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for etude in etudes %}
+                                <tr>
+                                    <td>{{ etude.id }}</td>
+                                    <td>{{ etude.libelle }}</td>
+                                    <td>{{ user.firstName }}</td>
+                                    <td class="text-end p-0">
+                                        <div class="d-flex justify-content-end">
+                                            <a href="{{ path('etude_show', {'id': etude.id}) }}" data-bs-toggle="tooltip" title="Voir" class="btn btn-xs m-0 btn-primary me-1"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ path('etude_restore', {'id': etude.id}) }}" data-bs-toggle="tooltip" title="Restaurer" class="btn btn-xs m-0 btn-success me-1"><i class="fas fa-redo-alt"></i></a>
+                                            {{ include('admin/etude/_delete_form.html.twig') }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="8">Aucun niveau d'étude mis à la corbeille</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
