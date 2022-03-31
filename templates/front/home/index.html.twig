@@ -1,14 +1,163 @@
-{% extends 'base.html.twig' %}
+{% extends 'front/base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Ort Junior Conseil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-</div>
+    <header class="u-align-center u-clearfix u-header u-header" id="sec-4320">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <a href="{{ path('index_ort_junior_conseil') }}" data-page-id="39791696" class="u-image u-logo u-image-1" data-image-width="500" data-image-height="500" title="Index">
+                <img src="{{ asset('front/images/Logo-removebg-preview1.png') }}" class="u-logo-image u-logo-image-1">
+            </a>
+            <a href="{{ path('search_etudiant_index') }}" class="u-btn u-btn-round u-button-style u-custom-font u-font-arial u-hover-custom-color-1 u-palette-1-base u-radius-3 u-btn-1">Rechercher</a>
+            <nav class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-menu u-menu-dropdown u-menu-open-right u-offcanvas u-menu-1" data-position="">
+                <div class="menu-collapse u-custom-font u-font-arial" style="font-size: 1.25rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 700;">
+                    <a class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-border-radius u-custom-borders u-custom-color u-custom-hover-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link" href="#">
+                        <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-2498"></use></svg>
+                        <svg class="u-svg-content" version="1.1" id="svg-2498" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+                            </g></svg>
+                    </a>
+                </div>
+                <div class="u-custom-menu u-nav-container">
+                    <ul class="u-custom-font u-font-arial u-nav u-spacing-10 u-unstyled u-nav-1">
+                        <li class="u-nav-item"><a class="u-active-custom-color-1 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-palette-1-base u-radius-3" href="{{ path('qui_sommes_nous_ort_junior_conseil') }}" style="padding: 12px 20px;">Qui sommes nous</a>
+                        </li>
+                        <li class="u-nav-item"><a class="u-active-custom-color-1 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-palette-1-base u-radius-3" style="padding: 12px 20px;">Connexion</a><div class="u-nav-popup">
+                                <ul class="u-custom-font u-font-arial u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-2"><li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-hover-custom-color-1 u-nav-link" href="{{ path('etudiant_login') }}">ETUDIANT</a>
+                                    </li><li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-hover-custom-color-1 u-nav-link" href="{{ path('admin_login') }}">ADMINISTRATION</a>
+                                    </li></ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="u-custom-menu u-nav-container-collapse">
+                    <div class="u-container-style u-custom-color-1 u-inner-container-layout u-opacity u-opacity-40 u-sidenav">
+                        <div class="u-inner-container-layout u-sidenav-overflow">
+                            <div class="u-menu-close"></div>
+                            <ul class="u-align-center u-custom-font u-font-arial u-nav u-popupmenu-items u-unstyled u-nav-3">
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ path('qui_sommes_nous_ort_junior_conseil') }}">Qui sommes nous</a>
+                                </li>
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link">Connexion</a><div class="u-nav-popup">
+                                        <ul class="u-custom-font u-font-arial u-h-spacing-20 u-nav u-unstyled u-v-spacing-10 u-nav-4">
+                                            <li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-hover-custom-color-1 u-nav-link" href="{{ path('etudiant_login') }}">ETUDIANT</a>
+                                            </li>
+                                            <li class="u-nav-item"><a class="u-active-custom-color-1 u-button-style u-hover-custom-color-1 u-nav-link" href="{{ path('admin_login') }}">ADMINISTRATION</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="u-clearfix u-valign-middle-xl u-section-1" id="carousel_d513">
+        <img src="{{ asset('front/images/39791696-03.jpeg') }}" alt="" class="u-expanded-height-lg u-expanded-height-xl u-image u-image-default u-image-1" data-image-width="1500" data-image-height="1000">
+        <div class="u-align-center u-container-style u-group u-opacity u-opacity-50 u-palette-1-light-2 u-shape-rectangle u-group-1">
+            <div class="u-container-layout u-valign-middle u-container-layout-1">
+                <h1 class="u-text u-text-1">ORT<br>Junior&nbsp;<br>Conseil
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-section-2" id="sec-d4dd">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+                <div class="u-layout" style="">
+                    <div class="u-layout-row" style="">
+                        <div class="u-container-style u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-white u-layout-cell-1" src="">
+                            <div class="u-container-layout u-valign-middle u-container-layout-1">
+                                <h2 class="u-align-center u-text u-text-default u-text-1">Bienvenue sur la plateforme de recrutement d'étudiants à l'O.R.T</h2>
+                                <p class="u-align-justify u-custom-font u-font-arial u-text u-text-2"> Vous souhaitez recruter un étudiant en alternance ici vous trouverez le profil idéal pour votre entreprise qui vous permettra de vous développer pour vos projets numériques.</p>
+                            </div>
+                        </div>
+                        <div class="u-align-center u-container-style u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-layout-cell-2" src="">
+                            <div class="u-container-layout u-valign-middle-sm u-valign-middle-xs u-container-layout-2" src="">
+                                <img class="u-align-center u-image u-image-1" src="{{ asset('front/images/index-removebg-preview.png') }}" data-image-width="225" data-image-height="225">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-3" id="sec-e4ab">
+        <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+            <h2 class="u-align-center u-text u-text-black u-text-default u-text-1">NOS FORMATIONS DIGITAL ET NUMERIQUE</h2>
+            <div class="u-expanded-width u-list u-list-1">
+                <div class="u-repeater u-repeater-1">
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+                            <div class="u-custom-color-1 u-shape u-shape-circle u-shape-1"></div>
+                            <p class="u-custom-font u-font-arial u-text u-text-default u-text-white u-text-2"> BAC +2</p>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-container-layout-2">
+                            <div class="u-custom-color-1 u-shape u-shape-circle u-shape-2"></div>
+                            <p class="u-custom-font u-font-arial u-text u-text-default u-text-white u-text-3">BAC +3</p>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-middle-sm u-valign-middle-xs u-container-layout-3">
+                            <div class="u-custom-color-1 u-shape u-shape-circle u-shape-3"></div>
+                            <p class="u-custom-font u-font-arial u-text u-text-default u-text-white u-text-4">BAC +5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-section-4" id="sec-37a4">
+        <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-xs u-sheet-1">
+            <img alt="" class="u-image u-image-default u-image-1" data-image-width="1500" data-image-height="1000" src="{{ asset('front/images/39791696-04.jpeg') }}">
+            <div class="u-container-style u-custom-color-1 u-group u-opacity u-opacity-45 u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <h2 class="u-text u-text-default u-text-1">BTS<br>Services&nbsp;<br>informatique aux Organisations
+                    </h2>
+                    <img class="u-image u-image-default u-preserve-proportions u-image-2" src="{{ asset('front/images/Screenshot2022-03-28at17-46-19BTSSIOSLAMSolutionsLogiciellesetApplicationsMtiers.png') }}" alt="" data-image-width="150" data-image-height="150">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-5" id="carousel_4b5a">
+        <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-xs u-sheet-1">
+            <img alt="" class="u-image u-image-default u-image-1" data-image-width="150" data-image-height="119" src="{{ asset('front/images/39791696-05.jpeg') }}">
+            <div class="u-container-style u-custom-color-1 u-group u-opacity u-opacity-45 u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <h2 class="u-text u-text-default u-text-1"> BACHELOR<br>Concepteur de Systèmes d’Information
+                    </h2>
+                    <img class="u-image u-image-default u-preserve-proportions u-image-2" src="{{ asset('front/images/Screenshot2022-03-28at17-46-19BTSSIOSLAMSolutionsLogiciellesetApplicationsMtiers.png') }}" alt="" data-image-width="150" data-image-height="150">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-section-6" id="carousel_c593">
+        <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-xs u-sheet-1">
+            <img alt="" class="u-image u-image-default u-image-1" data-image-width="1280" data-image-height="914" src="{{ asset('front/images/64cb4c4e6de50440d600944a61f2bcf3175b7087fd3b53218df3758c0d9d7f502fb67515362343d82f47c4611cf4d5746823f756bfd092ba5a868c_1280.jpg') }}">
+            <div class="u-container-style u-custom-color-1 u-group u-opacity u-opacity-45 u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <h2 class="u-text u-text-default u-text-1"> BAC +5<br>MANAGER DE SOLUTIONS DIGITALES ET DATA (MS2D)
+                    </h2>
+                    <img class="u-image u-image-default u-preserve-proportions u-image-2" src="{{ asset('front/images/Screenshot2022-03-28at17-46-19BTSSIOSLAMSolutionsLogiciellesetApplicationsMtiers.png') }}" alt="" data-image-width="150" data-image-height="150">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-7" id="carousel_b6a2">
+        <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-xs u-sheet-1">
+            <img alt="" class="u-image u-image-default u-image-1" data-image-width="1280" data-image-height="534" src="{{ asset('front/images/cea496d2adf3684b719746b3b23070455780fa1e124f2ae477caf1e9a6cf283ab26c1e4367e6f64b9ef97a480051dbf5376235779bf9a643008121_1280.jpg') }}">
+            <div class="u-container-style u-custom-color-1 u-group u-opacity u-opacity-45 u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-1">
+                    <h2 class="u-text u-text-default u-text-1"> BAC +5<br>EXPERT RÉSEAUX INFRASTRUCTURES ET SÉCURITÉ (ERIS)
+                    </h2>
+                    <img class="u-image u-image-default u-preserve-proportions u-image-2" src="{{ asset('front/images/Screenshot2022-03-28at17-46-19BTSSIOSLAMSolutionsLogiciellesetApplicationsMtiers.png') }}" alt="" data-image-width="150" data-image-height="150">
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
